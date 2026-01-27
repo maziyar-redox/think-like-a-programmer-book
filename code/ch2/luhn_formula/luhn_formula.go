@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func doubleDigitValue(digit int) int {
+func doublingDigitValue(digit int) int {
 	doubledDigit := digit * 2
 	sum := 0
 	if doubledDigit > 10 {
@@ -14,6 +14,33 @@ func doubleDigitValue(digit int) int {
 }
 
 func main() {
-	var b int = 0
-	fmt.Scan(&b)
+	var userInput int
+	var oddLengthChecksum int
+	var evenLengthChecksum int
+	fmt.Scanln(&userInput)
+	position := 1
+	for userInput % 10 != 0 {
+		currentNumber := userInput % 10
+		if position % 2 == 0 {
+			oddLengthChecksum += doublingDigitValue(currentNumber)
+			evenLengthChecksum += currentNumber
+		} else {
+			oddLengthChecksum += currentNumber
+			evenLengthChecksum += doublingDigitValue(currentNumber)
+		}
+		userInput /= 10
+		position++
+	}
+	var checksum int
+	if (position - 1) % 2 == 0 {
+		checksum = evenLengthChecksum
+	} else {
+		checksum = oddLengthChecksum
+	}
+	fmt.Println("Checksum is :", checksum)
+	if checksum % 10 == 0 {
+		fmt.Println("Checksum is valid")
+	} else {
+		fmt.Println("Checksum is not valid")
+	}
 }
