@@ -14,13 +14,10 @@ func charToInt(charArg string) int {
 	return sum
 }
 
-type 
-
 func main() {
 	var getInput string
 	var digitChar string
 	//var decodedMessage string
-	var currentMode
 	fmt.Print("Enter your input : ")
 	fmt.Scanln(&getInput)
 	for i := 0; i < len(getInput); i++ {
